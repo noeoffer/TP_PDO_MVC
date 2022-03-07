@@ -47,4 +47,84 @@ class Continent {
 
         return $this;
     }
+
+
+    /**
+     * Retourne l'ensemble des continents
+     *
+     * @return Continent[] tableau d'objet continent
+     */
+    public static function findAll() : array 
+    {
+        $req=MonPdo::getInstance()->prepare ("Select * from continent");
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,'Continent');
+        $req->execute();
+        $lesResultats=$req->fetchAll();
+        return $lesResultats;
+    }
+
+
+
+    /**
+     * Trouve un continent par son num
+     *
+     * @param integer $id numéro du continent
+     * @return Continent objet continent trouvé
+     */
+
+    public static function findById(int $id) : Continent 
+    {
+        $req=MonPdo::getInstance()->prepare ("Select * from continent where num= :id");
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,'Continent');
+        $req->bindParam(':id',$id);
+        $req->execute();
+        $leResultats=$req->fetch();
+        return $leResultats;
+    }
+
+
+
+/**
+ * Permet d'ajouter un continent
+ *
+ * @param Continent $continent continent a ajouter
+ * @return integer resultat (1 si l'opération a réussi, 0 sinon)
+ */
+    public static function add(Continent $continent) :int 
+    {
+        $req=MonPdo::getInstance()->prepare ("Insert into continent(libelle) values(:libelle)");
+        $req->bindParam(':id',$continent->getLibelle());
+        $nb=$req->execute();
+        return $nb;
+    }
+
+/**
+ * Permet de modifier un continent
+ *
+ * @param Continent $continent continent a modifier
+ * @return integer resultat (1 si l'opération a réussi, 0 sinon)
+ */
+    public static function update(Continent $continent) :int
+    {
+        $req=MonPdo::getInstance()->prepare ("update continent set libelle= :libelle where num= :id");
+        $req->bindParam(':id',$continent->getNum());
+        $req->bindParam(':libelle',$continent->getLibelle());
+        $nb=$req->execute();
+        return $nb;
+    }
+
+
+/**
+ * Permet de suppr un continent
+ *
+ * @param Continent $continent
+ * @return integer
+ */
+    public static function delete(Continent $continent) :int
+    {
+        $req=MonPdo::getInstance()->prepare ("delete from continent where num= :id");
+        $req->bindParam(':id',$continent->getNum());
+        $nb=$req->execute();
+        return $nb;
+    }
 }
