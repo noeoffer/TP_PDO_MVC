@@ -38,19 +38,42 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Gestion des genres<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Gestion des auteurs</a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-swimmer"></i>Gestion des Auteurs</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="listeNationalites.php">Liste des auteurs</a>
+          <a class="dropdown-item" href="formNationalite.php?action=Ajouter">Ajouter un auteur</a>
+        </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-swimmer"></i>Menu déroulant</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-swimmer"></i>Gestion des nationalités</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="listeNationalites.php">Liste des nationalités</a>
           <a class="dropdown-item" href="formNationalite.php?action=Ajouter">Ajouter une nationalité</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion des continents</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="index.php?uc=continents&action=list">Liste des continents</a>
+          <a class="dropdown-item" href="index.php?uc=continents&action=add">Ajouter un continent</a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
+<?php if (!empty($_SESSION['message'])){
+    $mesMessages=$_SESSION['message'];
+    foreach($mesMessages as $key=>$message){
+        echo '<div class="container pt-5 mt-5">
+                <div class="alert alert-'.$key.' alert-dismissible fade show" role="alert">' . $message .
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+              </div>';
+    }
+    $_SESSION['message']=[];
+}
+
+?>

@@ -8,9 +8,9 @@ class MonPdo
 {
 
 private static $serveur='mysql:host=serverbtssiojv.ddns.net';
-private static $bdd='dbname='; 
-private static $user='' ; 
-private static $mdp='' ;
+private static $bdd='dbname=bouchi_biblio'; 
+private static $user='bouchi' ; 
+private static $mdp='bouchi' ;
 private static $monPdo;
 private static $unPdo = null;
 
