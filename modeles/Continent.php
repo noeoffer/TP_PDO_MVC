@@ -93,7 +93,8 @@ class Continent {
     public static function add(Continent $continent) :int 
     {
         $req=MonPdo::getInstance()->prepare ("Insert into continent(libelle) values(:libelle)");
-        $req->bindParam(':id',$continent->getLibelle());
+        $libelle=$continent->getLibelle();
+        $req->bindParam(':libelle',$libelle);
         $nb=$req->execute();
         return $nb;
     }
@@ -107,8 +108,10 @@ class Continent {
     public static function update(Continent $continent) :int
     {
         $req=MonPdo::getInstance()->prepare ("update continent set libelle= :libelle where num= :id");
-        $req->bindParam(':id',$continent->getNum());
-        $req->bindParam(':libelle',$continent->getLibelle());
+        $num=$continent->getNum();
+        $libelle=$continent->getLibelle();
+        $req->bindParam(':id',$num);
+        $req->bindParam(':libelle',$libelle);
         $nb=$req->execute();
         return $nb;
     }
@@ -123,8 +126,21 @@ class Continent {
     public static function delete(Continent $continent) :int
     {
         $req=MonPdo::getInstance()->prepare ("delete from continent where num= :id");
-        $req->bindParam(':id',$continent->getNum());
+        $num=$continent->getNum();
+        $req->bindParam(':id',$num);
         $nb=$req->execute();
         return $nb;
+    }
+
+    /**
+     * Set the value of num
+     *
+     * @return  self
+     */ 
+    public function setNum($num):self
+    {
+        $this->num = $num;
+
+        return $this;
     }
 }

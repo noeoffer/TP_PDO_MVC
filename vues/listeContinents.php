@@ -20,9 +20,9 @@
                         echo "<td class='col-md-2'>".$continent->getNum()."</td>";
                         echo "<td class='col-md-8'>".$continent->getLibelle()."</td>";
                         echo "<td class='col-md-2'>
-                                <a href='formNationalite.php?action=Modifier&num=".$continent->getNum()."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
+                                <a href='index.php?uc=continents&action=update&num=".$continent->getNum()."' class='btn btn-primary'><i class='fas fa-pen'></i></a>
 
-                                <a href='#modalsuppr' data-suppr='supprNationalite.php?num=".$continent->getLibelle()."' data-toggle='modal' data-message ='Voulez vous supprimer cette nationalité ?' class='btn btn-danger'><i class='fas far fa-trash-alt'></i</a>
+                                <a href='#modalsuppr' data-suppr='index.php?uc=continents&action=delete&num=".$continent->getLibelle()."' data-toggle='modal' data-message ='Voulez vous supprimer ce continent ?' class='btn btn-danger'><i class='fas far fa-trash-alt'></i</a>
                             </td>";
                     echo "</tr>";
                     //'supprNationalite.php?num=$nationalite->num'
