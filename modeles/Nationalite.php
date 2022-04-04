@@ -162,5 +162,15 @@ class Nationalite {
         return $nb;
     }
 
-    
+   /**
+     * Set the value of num
+     *
+     * @return  self
+     */ 
+    public function setNum($num):self
+    {
+        $this->num = $num;
+
+        return $this;
+    } 
 }
