@@ -9,11 +9,13 @@ switch($action){
 
     case 'add' :
         $mode="Ajouter";
+        $lesContinents = Continent::findAll();
         include ("vues/continent/formContinent.php");
     break;
 
     case 'update' :
         $mode="Modifier";
+        
         $continent=Continent::findById($_GET['num']);
         include ("vues/continent/formContinent.php");
         break;

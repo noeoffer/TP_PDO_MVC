@@ -7,11 +7,14 @@
     <form id="formRecherche" action ="index.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
         <div class="row">
             <div class="col">
+                
+                    
                 <?php if (empty('libelle')){ // truc pour réecrire la variable de l'utilisateur
                     echo '<input type="text" class="form-control" name="libelle" id="libelle"  placeholder="Saisir le libellé">';
                 }
                     else{
-                    echo $libelle; // affiche le libellé si pas vide
+                        echo '<input type="text" class="form-control" name="libelle" id="libelle"  value="'.$libelle.'" placeholder="Saisir le libellé">';
+                     // affiche le libellé si pas vide
                     } // faut refaire les Div, j'ai mal mis
                 ?> 
             </div>

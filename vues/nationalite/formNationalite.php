@@ -7,6 +7,17 @@
                     <label for="libelle"><strong>Libellé</strong></label>
                     <input type='text' class='form-control mb-3' id='libelle' placeholder='Saisir le libellé' name='libelle' value="<?php if ($mode =='Modifier') {echo $nationalite->getLibelle() ;}?>">
                     
+            
+                <div class='mb-3'>
+                    <select name="continent" class="form-control" onChange="document.getElementById('formRecherche').submit()">
+                    <?php echo "<option value='Tous'>Tous les continents</option>";
+                    foreach($lesContinents as $continent){
+                        $selection = $continent->getNum()==$continentSel ? 'selected' : '';
+                        echo "<option value='".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
+                    }
+                    ?>
+                    </select>
+                </div>
             </div>
             
             
@@ -20,4 +31,4 @@
             </div>
         
         </form>
-    </div>
+</div>

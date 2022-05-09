@@ -72,11 +72,12 @@ class Continent {
      * @return Continent objet continent trouvé
      */
 
-    public static function findById(int $id) : Continent 
+    public static function findById(int $libelle) : Continent 
     {
+        var_dump($libelle);
         $req=MonPdo::getInstance()->prepare ("Select * from continent where num= :id");
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,'Continent');
-        $req->bindParam(':id',$id);
+        $req->bindParam(':id',$libelle);
         $req->execute();
         $leResultats=$req->fetch();
         return $leResultats;
